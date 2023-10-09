@@ -3,14 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dmonjas- <dmonjas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 14:44:51 by david             #+#    #+#             */
-/*   Updated: 2023/10/09 11:08:59 by david            ###   ########.fr       */
+/*   Updated: 2023/10/09 13:43:49 by dmonjas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+/*
+void	ft_free(t_read *file)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < file->heigth)
+	{
+		j = 0;
+		free (file->z[i]);
+		//free (file->color[i]);
+		i++;
+	}
+	free (file->z);
+	free (file->color);
+	free (file);
+}*/
 
 static void	ft_error_col(void)
 {
@@ -18,27 +36,10 @@ static void	ft_error_col(void)
 	exit (1);
 }
 
-static void	ft_error_num(void)
+static void	ft_error_num()
 {
 	ft_printf("Invalid number map\n");
 	exit (1);
-}
-
-static void	ft_sing_error(char *line)
-{
-	int	i;
-
-	i = 0;
-	if (line[0] == '+' || line[0] == '-')
-		i++;
-	while (line[i])
-	{
-		if (line[i] == '\n')
-			break ;
-		if (line[i] > '9' || line[i] < '0')
-			ft_error_num();
-		i++;
-	}
 }
 
 static void	ft_error_color(char	*line)
@@ -71,20 +72,16 @@ void	ft_map_error(char *line, t_read *file)
 	int	i;
 
 	i = 0;
-	if (ft_strchr(line, ',') != 0)
+	if (line[0] == '+' || line[0] == '-')
+	i++;
+	while (line[i] && line[i] != ',')
 	{
-		if (line[0] == '+' || line[0] == '-')
-		i++;
-		while (line[i] != ',')
-		{
 			if (line[i] == '\n')
-				break ;
-			if (line[i] > '9' || line[i] < '0')
-				ft_error_num();
-			i++;
-		}
-		ft_error_color(ft_strchr(line, ','));
+			break ;
+		if (line[i] > '9' || line[i] < '0')
+			ft_error_num();
+		i++;
 	}
-	else
-		ft_sing_error(line);
+	if (line[i] == ',')
+		ft_error_color(ft_strchr(line, ','));
 }

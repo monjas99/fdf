@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_file_read.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dmonjas- <dmonjas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 14:44:59 by david             #+#    #+#             */
-/*   Updated: 2023/10/09 11:06:02 by david            ###   ########.fr       */
+/*   Updated: 2023/10/09 13:39:25 by dmonjas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,18 +108,18 @@ void	ft_file(t_read *file, char *av)
 	i = -1;
 	file->heigth = ft_get_heigth(av, file);
 	file->width = ft_get_width(av, file);
-	file->z = malloc(sizeof(int *) * (file->heigth + 1));
+	file->z = malloc(sizeof(int **) * (file->heigth + 1));
 	if (!file->z)
 		return ;
-	file->color = malloc(sizeof(t_color *) * (file->heigth + 1));
+	file->color = malloc(sizeof(t_color **) * (file->heigth + 1));
 	if (!file->color)
 		return ;
 	while (++i <= file->heigth)
 	{
-		file->z[i] = malloc(sizeof(int) * (file->width + 1));
+		file->z[i] = malloc(sizeof(int*) * (file->width + 1));
 		if (!file->z[i])
 			return ;
-		file->color[i] = malloc(sizeof(t_color) * (file->width + 1));
+		file->color[i] = malloc(sizeof(t_color*) * (file->width + 1));
 		if (!file->color[i])
 			return ;
 	}

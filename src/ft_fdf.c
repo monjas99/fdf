@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fdf.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dmonjas- <dmonjas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 14:44:56 by david             #+#    #+#             */
-/*   Updated: 2023/10/09 11:54:05 by david            ###   ########.fr       */
+/*   Updated: 2023/10/09 13:43:06 by dmonjas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_print(t_read *file)
 		j = 0;
 		while (j < file->width)
 		{
-			ft_printf("%d", file->color[i][j].rgb);
+			ft_printf("%d", file->z[i][j]);
 			ft_printf(" ");
 			j++;
 		}
@@ -69,11 +69,11 @@ int	main(int ac, char **av)
 	ft_file(file, av[1]);
 	ft_init(file);
 	file->coor = malloc(sizeof(*file->coor));
-	//ft_print(file);
 	ft_draw(file);
 	mlx_put_image_to_window
 		(file->win->mlx_ptr, file->win->win_ptr, file->win->img, 0, 0);
 	ft_window_control(file->win, file);
 	mlx_loop(file->win->mlx_ptr);
+	ft_print(file);
 	return (0);
 }

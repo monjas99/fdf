@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_draw.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dmonjas- <dmonjas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 13:23:16 by david             #+#    #+#             */
-/*   Updated: 2023/10/02 16:05:11 by david            ###   ########.fr       */
+/*   Updated: 2023/10/09 12:35:18 by dmonjas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	ft_bresenham(t_read *file, float x1, float y1)
 	while ((int)(file->coor->x - file->coor->x_next) ||
 		(int)(file->coor->y - file->coor->y_next))
 	{
-		my_mlx_pixel_put(file, file->coor->x, file->coor->y, file->coor->color);
+		my_mlx_pixel_put(file, file->coor->x, file->coor->y, 0xFFFFFF/*file->coor->color*/);
 		file->coor->x += file->coor->x_step;
 		file->coor->y += file->coor->y_step;
 	}
