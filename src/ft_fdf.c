@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 14:44:56 by david             #+#    #+#             */
-/*   Updated: 2023/10/04 18:04:34 by david            ###   ########.fr       */
+/*   Updated: 2023/10/09 11:54:05 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,28 +50,30 @@ void	ft_draw(t_read *file)
 	}
 }
 
+void	leaks(void)
+{
+	system("leaks fdf");
+}
+
 int	main(int ac, char **av)
 {
 	t_read		*file;
-	t_coor		*coor;
 
+	atexit(leaks);
 	if (ac != 2)
 		return (ft_printf("Number of arguments incorrent"));
+	ft_error_av(av[1]);
 	file = malloc(sizeof(*file));
 	if (!file)
 		return (0);
-	coor = malloc(sizeof(*coor));
-	if (!coor)
-		return (0);
-	ft_error_av(av[1]);
 	ft_file(file, av[1]);
 	ft_init(file);
-	file->coor = coor;
+	file->coor = malloc(sizeof(*file->coor));
+	//ft_print(file);
 	ft_draw(file);
 	mlx_put_image_to_window
 		(file->win->mlx_ptr, file->win->win_ptr, file->win->img, 0, 0);
 	ft_window_control(file->win, file);
 	mlx_loop(file->win->mlx_ptr);
-	ft_print(file);
 	return (0);
 }

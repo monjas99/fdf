@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 11:57:13 by dmonjas-          #+#    #+#             */
-/*   Updated: 2023/10/04 18:12:51 by david            ###   ########.fr       */
+/*   Updated: 2023/10/09 11:08:14 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	ft_key_press(int key, t_read *file)
 	{
 		mlx_clear_window(file->win->mlx_ptr, file->win->win_ptr);
 		mlx_destroy_window(file->win->mlx_ptr, file->win->win_ptr);
-		ft_close();
+		ft_close(file);
 	}
 	ft_zoom(key, file);
 	ft_move(key, file);

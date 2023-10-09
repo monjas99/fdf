@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_error_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmonjas- <dmonjas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:55:25 by david             #+#    #+#             */
-/*   Updated: 2023/10/03 09:13:43 by dmonjas-         ###   ########.fr       */
+/*   Updated: 2023/10/09 12:15:34 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,29 @@ void	ft_error_file(void)
 	exit (1);
 }
 
-int	ft_close(void)
+int	ft_close(t_read *file)
 {
+	int	i;
+
+	i = 0;
+	while (++i <= file->heigth)
+	{
+		//free (file->z[i]);
+		//ft_printf("%d\n", i);
+		free (file->color[i]);
+	}
+	free (file->coor);
+	free (file->z);
+	free (file->color);
 	exit (0);
 }
 
-void	ft_width_error(void)
+void	ft_width_error(char *line, t_read *file)
 {
+	free (line);
+	free (file);
 	ft_printf("Error line len\n");
-	exit(1);
+	exit (1);
 }
 
 void	ft_error_av(char *av)

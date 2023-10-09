@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmonjas- <dmonjas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 11:11:03 by david             #+#    #+#             */
-/*   Updated: 2023/10/03 10:45:21 by dmonjas-         ###   ########.fr       */
+/*   Updated: 2023/10/09 11:53:31 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,11 @@
 
 t_read	*ft_init(t_read *file)
 {
-	t_window	*window;
-
-	window = malloc(sizeof(*window));
-	if (!window)
+	file->win = malloc(sizeof(*file->win));
+	if (!file->win)
 		return (0);
 	file->w = 4500;
 	file->h = 4500;
-	file->win = window;
 	file->win->mlx_ptr = mlx_init();
 	file->win->win_ptr = mlx_new_window(
 			file->win->mlx_ptr, 2500, 1200, "FDF");

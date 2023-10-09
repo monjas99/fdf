@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:24:34 by dmonjas-          #+#    #+#             */
-/*   Updated: 2023/10/04 18:06:14 by david            ###   ########.fr       */
+/*   Updated: 2023/10/09 11:08:27 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,13 @@ void		my_mlx_pixel_put(t_read *file, int x, int y, int color);
 void		ft_draw(t_read *file);
 void		ft_window_control(t_window *window, t_read *file);
 void		ft_bresenham(t_read *file, float x1, float y1);
-void		ft_map_error(char *line);
-void		ft_width_error(void);
+void		ft_map_error(char *line, t_read *file);
+void		ft_width_error(char *line, t_read *file);
 void		ft_error_av(char *av);
 char		*ft_strchr_fdf(const char *s, int c);
 size_t		ft_strlen_fdf(const char *c);
 int			ft_num(const char *s, char c);
-int			ft_close(void);
+int			ft_close(t_read *file);
 int			ft_hex_int(char hex, char hex2);
 float		absolut(float x);
 float		max1(float x, float y);

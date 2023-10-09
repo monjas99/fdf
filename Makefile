@@ -6,14 +6,14 @@
 #    By: david <david@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/29 10:00:52 by dmonjas-          #+#    #+#              #
-#    Updated: 2023/10/04 18:09:46 by david            ###   ########.fr        #
+#    Updated: 2023/10/09 09:28:48 by david            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 RM = rm -rf
 CC = gcc
-CFLAGS = -Wextra -Wall -Werror -g3 -fsanitize=address
+CFLAGS = -Wextra -Wall #-Werror -g3 -fsanitize=address
 
 LIBFT_DIR = ./libft/
 LIBFT = ./libft/libft.a

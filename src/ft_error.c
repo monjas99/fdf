@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmonjas- <dmonjas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 14:44:51 by david             #+#    #+#             */
-/*   Updated: 2023/10/03 09:03:56 by dmonjas-         ###   ########.fr       */
+/*   Updated: 2023/10/09 11:08:59 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void	ft_error_color(char	*line)
 	}
 }
 
-void	ft_map_error(char *line)
+void	ft_map_error(char *line, t_read *file)
 {
 	int	i;
 

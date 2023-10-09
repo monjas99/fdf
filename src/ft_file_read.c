@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_file_read.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmonjas- <dmonjas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 14:44:59 by david             #+#    #+#             */
-/*   Updated: 2023/10/03 09:01:23 by dmonjas-         ###   ########.fr       */
+/*   Updated: 2023/10/09 11:06:02 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_color	ft_get_color(char *line)
 	return (color);
 }
 
-static int	ft_get_heigth(char *av)
+static int	ft_get_heigth(char *av, t_read *file)
 {
 	int		heigth;
 	int		fd;
@@ -36,21 +36,19 @@ static int	ft_get_heigth(char *av)
 		ft_error_file();
 	line = get_next_line(fd);
 	if (line[0] == '\n')
-	{
-		ft_printf("Error line len\n");
-		exit (1);
-	}
+		ft_width_error(line, file);
 	while (line)
 	{
-		line = get_next_line(fd);
-		heigth++;
 		free (line);
+		heigth++;
+		line = get_next_line(fd);
 	}
+	free (line);
 	close (fd);
 	return (heigth);
 }
 
-static int	ft_get_width(char *av)
+static int	ft_get_width(char *av, t_read *file)
 {
 	int		width;
 	int		fd;
@@ -66,12 +64,12 @@ static int	ft_get_width(char *av)
 	while (line)
 	{
 		if (ft_num(line, ' ') != width)
-			ft_width_error();
+			ft_width_error(line, file);
 		free (line);
 		line = get_next_line(fd);
 	}
-	close (fd);
 	free (line);
+	close (fd);
 	return (width);
 }
 
@@ -89,7 +87,7 @@ static void	ft_get_z(t_read *file, int i, int fd)
 		while (++j <= file->width - 1)
 		{
 			line = ft_split(gn, ' ');
-			ft_map_error(line[j]);
+			ft_map_error(line[j], file);
 			file->z[i][j] = ft_atoi(line[j]);
 			file->color[i][j] = ft_get_color(line[j]);
 		}
@@ -108,8 +106,8 @@ void	ft_file(t_read *file, char *av)
 	int	fd;
 
 	i = -1;
-	file->heigth = ft_get_heigth(av);
-	file->width = ft_get_width(av);
+	file->heigth = ft_get_heigth(av, file);
+	file->width = ft_get_width(av, file);
 	file->z = malloc(sizeof(int *) * (file->heigth + 1));
 	if (!file->z)
 		return ;
