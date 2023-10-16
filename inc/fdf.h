@@ -6,7 +6,7 @@
 /*   By: dmonjas- <dmonjas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:24:34 by dmonjas-          #+#    #+#             */
-/*   Updated: 2023/10/16 12:21:00 by dmonjas-         ###   ########.fr       */
+/*   Updated: 2023/10/16 12:59:25 by dmonjas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void		ft_free_line(char **line);
 char		*ft_strchr_fdf(const char *s, int c);
 size_t		ft_strlen_fdf(const char *c);
 int			ft_num(const char *s, char c);
-int			ft_close(t_read *file);
+int			ft_close(void);
 int			ft_hex_int(char hex, char hex2);
 float		absolut(float x);
 float		max1(float x, float y);
