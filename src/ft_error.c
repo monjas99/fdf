@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmonjas- <dmonjas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 14:44:51 by david             #+#    #+#             */
-/*   Updated: 2023/10/09 13:43:49 by dmonjas-         ###   ########.fr       */
+/*   Updated: 2023/10/13 16:37:00 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,20 @@ void	ft_free(t_read *file)
 	free (file);
 }*/
 
-static void	ft_error_col(void)
+static void	ft_error_col(t_read *file)
 {
+	free (file);
 	ft_printf("Invalid color map\n");
 	exit (1);
 }
 
-static void	ft_error_num()
+static void	ft_error_num(void)
 {
 	ft_printf("Invalid number map\n");
 	exit (1);
 }
 
-static void	ft_error_color(char	*line)
+static void	ft_error_color(char	*line, t_read *file)
 {
 	int	size;
 	int	i;
@@ -50,19 +51,19 @@ static void	ft_error_color(char	*line)
 	i = 1;
 	size = ft_strlen_fdf(line) - 1;
 	if (size > 8 || size < 4)
-		ft_error_col();
+		ft_error_col(file);
 	if (line[i] != '0')
-		ft_error_col();
+		ft_error_col(file);
 	i++;
 	if (line[i] != 'x' && line[i] != 'X')
-		ft_error_col();
+		ft_error_col(file);
 	i++;
 	while (line[i] && line[i] != '\n')
 	{
 		if ((line[i] < 'a' || line[i] > 'f')
 			&& (line[i] < 'A' || line[i] > 'F')
 			&& (line[i] < '0' || line[i] > '9'))
-			ft_error_col();
+			ft_error_col(file);
 		i++;
 	}
 }
@@ -79,9 +80,11 @@ void	ft_map_error(char *line, t_read *file)
 			if (line[i] == '\n')
 			break ;
 		if (line[i] > '9' || line[i] < '0')
+		{
 			ft_error_num();
+		}
 		i++;
 	}
 	if (line[i] == ',')
-		ft_error_color(ft_strchr(line, ','));
+		ft_error_color(ft_strchr(line, ','), file);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fdf.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmonjas- <dmonjas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 14:44:56 by david             #+#    #+#             */
-/*   Updated: 2023/10/09 13:43:06 by dmonjas-         ###   ########.fr       */
+/*   Updated: 2023/10/10 20:32:01 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,13 @@ int	main(int ac, char **av)
 	if (!file)
 		return (0);
 	ft_file(file, av[1]);
-	ft_init(file);
+	/*ft_init(file);
 	file->coor = malloc(sizeof(*file->coor));
 	ft_draw(file);
 	mlx_put_image_to_window
 		(file->win->mlx_ptr, file->win->win_ptr, file->win->img, 0, 0);
 	ft_window_control(file->win, file);
 	mlx_loop(file->win->mlx_ptr);
-	ft_print(file);
+	ft_print(file);*/
 	return (0);
 }
