@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dmonjas- <dmonjas-@student.42.fr>          +#+  +:+       +#+         #
+#    By: david <david@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/29 10:00:52 by dmonjas-          #+#    #+#              #
-#    Updated: 2023/10/16 12:57:43 by dmonjas-         ###   ########.fr        #
+#    Updated: 2023/10/17 00:14:28 by david            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 RM = rm -rf
 CC = gcc
-CFLAGS = -Wextra -Wall #-g3 -fsanitize=address
+CFLAGS = -Wextra -Wall -Werror
 
 LIBFT_DIR = ./libft/
 LIBFT = ./libft/libft.a
