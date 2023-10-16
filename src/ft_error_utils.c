@@ -6,7 +6,7 @@
 /*   By: dmonjas- <dmonjas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:55:25 by david             #+#    #+#             */
-/*   Updated: 2023/10/09 12:32:19 by dmonjas-         ###   ########.fr       */
+/*   Updated: 2023/10/16 12:58:49 by dmonjas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_error_file(void)
 	exit (1);
 }
 
-int	ft_close(t_read *file)
+int	ft_close(void)
 {
 	exit (0);
 }

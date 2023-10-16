@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: david <david@student.42.fr>                +#+  +:+       +#+         #
+#    By: dmonjas- <dmonjas-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/29 10:00:52 by dmonjas-          #+#    #+#              #
-#    Updated: 2023/10/03 07:54:45 by dmonjas-         ###   ########.fr        #
+#    Updated: 2023/10/16 12:57:43 by dmonjas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,10 +20,10 @@ LIBFT = ./libft/libft.a
 LIB_INC = ./libft/inc/
 INC_DIR = ./inc/
 
-#MLX_DIR = ./mlx/
-#MLX = ./mlx/libmlx.a
-#MLX_INC = ./mlx/mlx.h
-MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
+MLX_DIR = ./mlx/
+MLX = ./mlx/libmlx.a
+MLX_INC = ./mlx/
+MLX_FLAGS = -lmlx -L$(MLX_INC) -framework OpenGL -framework AppKit
 
 SRC_DIR = ./src/
 OBJ_DIR = ./obj/
@@ -35,7 +35,7 @@ SRCS = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ_FILES = $(SRC_FILES:.c=.o)
 OBJS = $(addprefix $(OBJ_DIR), $(OBJ_FILES))
 
-INCLUDE = -I$(INC_DIR) -I$(LIB_INC) #-I$(MLX_INC)
+INCLUDE = -I$(INC_DIR) -I$(LIB_INC) -I$(MLX_INC)
 
 all: $(OBJ_DIR) $(LIBFT) $(MLX) $(NAME)
 
@@ -45,13 +45,13 @@ $(OBJ_DIR)%.o:$(SRC_DIR)%.c
 	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(NAME): $(OBJS)
-	@$(CC) $(CFLAGS) $(MLX_FLAGS) $(OBJS) $(INLUDE) $(LIBFT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(MLX_FLAGS) $(OBJS) $(INLUDE) $(LIBFT) $(MLX) -o $(NAME)
 	@echo "fdf correcto"
 
 $(LIBFT):
 	@make -C $(LIBFT_DIR)
-#$(MLX):
-#	@make -C $(MLX_DIR)
+$(MLX):
+	@make -C $(MLX_DIR)
 
 clean:
 	@make -C $(LIBFT_DIR) clean
