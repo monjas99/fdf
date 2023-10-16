@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_file_read.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dmonjas- <dmonjas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 14:44:59 by david             #+#    #+#             */
-/*   Updated: 2023/10/13 16:37:42 by david            ###   ########.fr       */
+/*   Updated: 2023/10/16 12:28:16 by dmonjas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ static void	ft_get_z(t_read *file, int i, int fd)
 	char	**line;
 	int		j;
 
+	line = NULL;
 	gn = get_next_line(fd);
 	i = 0;
 	while (gn)
@@ -87,12 +88,12 @@ static void	ft_get_z(t_read *file, int i, int fd)
 		while (++j <= file->width - 1)
 		{
 			line = ft_split(gn, ' ');
-			ft_map_error(line[j], file);
+			ft_map_error(line[j]);
 			file->z[i][j] = ft_atoi(line[j]);
-			//file->color[i][j] = ft_get_color(line[j]);
+			file->color[i][j] = ft_get_color(line[j]);
+			ft_free_line (line);
 		}
 		i++;
-		free (line);
 		free (gn);
 		gn = get_next_line(fd);
 	}
@@ -111,21 +112,20 @@ void	ft_file(t_read *file, char *av)
 	file->z = malloc(sizeof(int *) * (file->heigth + 1));
 	if (!file->z)
 		return ;
-	//file->color = malloc(sizeof(t_color *) * (file->heigth + 1));
-	//if (!file->color)
-	//	return ;
+	file->color = malloc(sizeof(t_color *) * (file->heigth + 1));
+	if (!file->color)
+		return ;
 	while (++i <= file->heigth)
 	{
 		file->z[i] = malloc(sizeof(int) * (file->width + 1));
 		if (!file->z[i])
 			return ;
-	//	file->color[i] = malloc(sizeof(t_color) * (file->width + 1));
-	//	if (!file->color[i])
-	//		return ;
+		file->color[i] = malloc(sizeof(t_color) * (file->width + 1));
+		if (!file->color[i])
+			return ;
 	}
 	fd = open (av, O_RDONLY);
 	if (fd < 1)
 		ft_error_file();
 	ft_get_z(file, i, fd);
-	exit (1);
 }

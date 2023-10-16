@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dmonjas- <dmonjas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:24:34 by dmonjas-          #+#    #+#             */
-/*   Updated: 2023/10/13 16:36:54 by david            ###   ########.fr       */
+/*   Updated: 2023/10/16 12:21:00 by dmonjas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,10 @@ void		my_mlx_pixel_put(t_read *file, int x, int y, int color);
 void		ft_draw(t_read *file);
 void		ft_window_control(t_window *window, t_read *file);
 void		ft_bresenham(t_read *file, float x1, float y1);
-void		ft_map_error(char *line, t_read *file);
+void		ft_map_error(char *line);
 void		ft_width_error(char *line, t_read *file);
 void		ft_error_av(char *av);
+void		ft_free_line(char **line);
 char		*ft_strchr_fdf(const char *s, int c);
 size_t		ft_strlen_fdf(const char *c);
 int			ft_num(const char *s, char c);
