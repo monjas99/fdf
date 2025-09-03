@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fdf.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmonjas- <dmonjas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 14:44:56 by david             #+#    #+#             */
-/*   Updated: 2023/10/16 11:55:55 by dmonjas-         ###   ########.fr       */
+/*   Updated: 2025/09/03 18:20:22 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,16 @@ void	ft_draw(t_read *file)
 	}
 }
 
-void	leaks(void)
+/*void	leaks(void)
 {
 	system("leaks fdf");
-}
+}*/
 
 int	main(int ac, char **av)
 {
 	t_read		*file;
 
-	atexit(leaks);
+	//atexit(leaks);
 	if (ac != 2)
 		return (ft_printf("Number of arguments incorrent"));
 	ft_error_av(av[1]);
